@@ -6,22 +6,20 @@ fs.readFile('1.txt', 'utf8', (err, data) => {
         return;
 
     }
-
-    let newstring = '';
+[]
+    let newString = '';
 
     for (let i = 1; i < data.length; i++) {
         if (data[i] === ' ' || data[i] === ',' || data[i] === '?' || data[i] === '.' || data[i] === '!' || data[i] === ';'){
             const lastLetter = data[i - 1];
             const UpperCaselastLetter = lastLetter.toUpperCase();
-            console.log(UpperCaselastLetter);
             newString = newString.slice(0, -1) + UpperCaselastLetter;
-            newstring += data[i];
+            newString += data[i];
         } else {
             newString += data[i];
         }
-        console.log(data)
 
-        fs.writeFile('2.txt', data, 'utf8', (err) => {
+        fs.writeFile('2.txt', newString, 'utf8', (err) => {
             if (err) {
                 console.error(err);
             }
